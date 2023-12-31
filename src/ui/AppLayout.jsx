@@ -1,5 +1,6 @@
 import { Outlet, useNavigation, useNavigate } from 'react-router-dom';
 import Header from './Header';
+import Home from './Home';
 import CartOverview from '../features/cart/CartOverview';
 import Loader from './Loader';
 import { useEffect } from 'react';
@@ -12,7 +13,7 @@ function AppLayout() {
   const { state } = useNavigation();
   const isLoading = state === 'loading';
   useEffect(() => {
-    if (!username) navigate('/');
+    !username && navigate('/');
   }, [navigate, username]);
 
   return (
@@ -21,7 +22,7 @@ function AppLayout() {
       <Header />
       <div className="overflow-auto">
         <main className="mx-auto max-w-3xl ">
-          <Outlet />
+          {username ? <Outlet /> : <Home />}
         </main>
       </div>
 
