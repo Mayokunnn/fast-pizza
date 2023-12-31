@@ -11,9 +11,10 @@ function AppLayout() {
   const username = useSelector(getUserName);
   const { state } = useNavigation();
   const isLoading = state === 'loading';
-  useEffect(() => {
-    if (!username) navigate('/');
-  }, [navigate, username]);
+  // useEffect(() => {
+  //   if (!username) navigate('/');
+  // }, [navigate, username]);
+
   return (
     <div className="grid h-screen grid-rows-[auto_1fr_auto] ">
       {isLoading && <Loader />}
